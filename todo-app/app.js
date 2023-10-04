@@ -17,11 +17,11 @@ app.get("/", async (requeset, response) => {
   let allTodos = await Todo.getTodo();
   if (requeset.accepts("html")) {
     response.render("index", {
-      allTodos,
+      alltodos,
     });
   } else {
     response.json({
-      allTodos,
+      alltodos,
     });
   }
 });
