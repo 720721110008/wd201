@@ -3,6 +3,10 @@ const app = express();
 const { Todo } = require("./models");
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
+const path=require("path")
+app.use(bodyParser.json());
+app.useexpress.static(path.join(_dirname,"public")));
+app.set("view engine","ejs");
 
 app.get("/", function (request, response) {
   response.send("Hello World");
