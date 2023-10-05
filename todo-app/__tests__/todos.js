@@ -83,7 +83,7 @@ describe("Todo Application", function () {
     let todoId = Parsedres.id;
 
     let deleteRespo = await agent.delete(`/todos/${todoId}`).send();
-    let parsedDeleteRespo = JSON.parse(deleteRespo.text);
-    expect(parsedDeleteRespo).toBe(true);
+    let parseddeleteRespo = JSON.parse(deleteRespo.text);
+    expect(parseddeleteRespo).toBe(true);
   });
 });
