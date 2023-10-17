@@ -1,14 +1,17 @@
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
+  
+   * {
+       margin:0px;
+       padding:0px;
+       box-sizing:border-box;
+     };
+       body
+        {
 
-body {
-  background-color: cornsilk;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
+          background-color:gray;
+          font-family:Arial, Helvetica, sans-serif;
 
-.Todo-Item:hover .trash-icon {
-  display: block;
-}
+        };
+          .todo:hover .trash-icon
+           {
+              display:block;
+           };
