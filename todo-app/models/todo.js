@@ -1,4 +1,4 @@
-/* eslint-disable no-undef */
+ /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 "use strict";
 const { Model, Op } = require("sequelize");
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
           },
           completed: false,
         },
-        order: [["id", "ASC"]],
+        order: [["id", "DEC"]],
       });
     }
     static dueToday() {
@@ -44,7 +44,7 @@ module.exports = (sequelize, DataTypes) => {
           },
           completed: false,
         },
-        order: [["id", "ASC"]],
+        order: [["id", "DEC"]],
       });
     }
     static dueLater() {
@@ -55,7 +55,7 @@ module.exports = (sequelize, DataTypes) => {
           },
           completed: false,
         },
-        order: [["id", "ASC"]],
+        order: [["id", "DEC"]],
       });
     }
     static completed() {
@@ -63,7 +63,7 @@ module.exports = (sequelize, DataTypes) => {
         where: {
           completed: true,
         },
-        order: [["id", "ASC"]],
+        order: [["id", "DEC"]],
       });
     }
     static async remove(id) {
