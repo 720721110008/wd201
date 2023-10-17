@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+ /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const express = require("express");
 const path = require("path");
@@ -24,7 +24,7 @@ app.get("/", async (request, response) => {
   let completed = await Todo.completed();
   if (request.accepts("html")) {
     response.render("index", {
-      title: "Todo application",
+      title: "Todo app",
       allTodos,
       overDue,
       dueToday,
