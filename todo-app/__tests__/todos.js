@@ -1,4 +1,4 @@
- /* eslint-disable no-undef */
+/* eslint-disable no-undef */
 // /* eslint-disable no-undef */
 const request = require("supertest");
 var cheerio = require("cheerio");
@@ -10,7 +10,8 @@ const extractCSRFToken = (html) => {
   const $ = cheerio.load(html);
   return $("[name=_csrf]").val();
 };
-describe("Todo Application", function () {
+
+describe("Todo App", function () {
   beforeAll(async () => {
     await db.sequelize.sync({ force: true });
     server = app.listen(4000, () => {});
@@ -87,3 +88,5 @@ describe("Todo Application", function () {
     expect(deleteResponse.statusCode).toBe(200);
   });
 });
+
+   
