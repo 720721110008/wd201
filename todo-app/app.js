@@ -1,5 +1,4 @@
- 
- /* eslint-disable no-unused-vars */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 const express = require("express");
 const app = express();
@@ -15,14 +14,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.set("view engine", "ejs");
 
 app.get("/", async (requeset, response) => {
-  let alltodos = await Todo.getTodo();
+  let allTodos = await Todo.getTodo();
   if (requeset.accepts("html")) {
     response.render("index", {
-      alltodos,
+      allTodos,
     });
   } else {
     response.json({
-      alltodos,
+      allTodos,
     });
   }
 });
@@ -75,15 +74,12 @@ app.put("/todos/:id/markAsCompleted", async function (request, response) {
 
 app.delete("/todos/:id", async function (request, response) {
   console.log("We have to delete a Todo with ID: ", request.params.id);
-  
   // FILL IN YOUR CODE HERE
-    // First, we have to query our database to delete a Todo by ID.
+  let deletedTodo = await Todo.destroy({ where: { id: request.params.id } });
+  response.send(deletedTodo ? true : false);
+  // First, we have to query our database to delete a Todo by ID.
   // Then, we have to respond back with true/false based on whether the Todo was deleted or not.
   // response.send(true)
-  
-  let deleteTodo = await Todo.destroy({ where: { id: request.params.id } });
-  response.send(deleteTodo ? true : false);
- 
 });
 
 module.exports = app;
