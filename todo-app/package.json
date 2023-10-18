@@ -1,4 +1,4 @@
-{
+ {
   "name": "todo-app",
   "version": "1.0.0",
   "description": "",
@@ -16,7 +16,7 @@
       "prettier --write ."
     ]
   },
-  "author": "Deepapriyatharsini <720721110008@hicet.ac.in>",
+  "author": "Deepa priyatharsini <720721110008@hicet.ac.in>",
   "license": "ISC",
   "devDependencies": {
     "cheerio": "^1.0.0-rc.12",
