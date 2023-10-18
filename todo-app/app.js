@@ -24,7 +24,7 @@ app.get("/", async (request, response) => {
   let completed = await Todo.completed();
   if (request.accepts("html")) {
     response.render("index", {
-      title: "Todo app",
+      title: "Todo application",
       allTodos,
       overDue,
       dueToday,
