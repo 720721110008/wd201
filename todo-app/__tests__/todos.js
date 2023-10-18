@@ -1,21 +1,24 @@
-/* eslint-disable no-undef */
+ /* eslint-disable no-undef */
 // /* eslint-disable no-undef */
 const request = require("supertest");
 var cheerio = require("cheerio");
 const db = require("../models/index");
 const app = require("../app");
+
 let server, agent;
+
 const extractCSRFToken = (html) => {
   const $ = cheerio.load(html);
   return $("[name=_csrf]").val();
 };
-describe("Todo App", function () {
+
+describe("Todo Application", function () {
   beforeAll(async () => {
     await db.sequelize.sync({ force: true });
     server = app.listen(4000, () => {});
     agent = request.agent(server);
   });
-  
+
   afterAll(async () => {
     try {
       await db.sequelize.close();
@@ -36,20 +39,22 @@ describe("Todo App", function () {
     });
     expect(response.statusCode).toBe(302);
   });
+
   test("Marks a todo with the given ID as complete", async () => {
     let res = await agent.get("/");
     let csrfToken = extractCSRFToken(res.text);
-    
     await agent.post("/todos").send({
       title: "Wash Dishes",
       dueDate: new Date().toISOString(),
       _csrf: csrfToken,
     });
+
     const groupedTodos = await agent
       .get("/todos")
       .set("Accept", "application/json");
     const parsedResponse = JSON.parse(groupedTodos.text);
     const lastItem = parsedResponse[parsedResponse.length - 1];
+
     res = await agent.get("/");
     csrfToken = extractCSRFToken(res.text);
 
@@ -85,5 +90,3 @@ describe("Todo App", function () {
     expect(deleteResponse.statusCode).toBe(302);
   });
 });
-
-   
